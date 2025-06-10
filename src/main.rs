@@ -47,11 +47,7 @@ async fn main() -> eyre::Result<()> {
         .await?;
 
     // Verify escrow happened
-    let alice_balance = mock_erc20_a
-        .balanceOf(test.alice.address())
-        .call()
-        .await?
-        ._0;
+    let alice_balance = mock_erc20_a.balanceOf(test.alice.address()).call().await?;
 
     let escrow_balance = mock_erc20_a
         .balanceOf(
@@ -61,8 +57,7 @@ async fn main() -> eyre::Result<()> {
                 .escrow_obligation,
         )
         .call()
-        .await?
-        ._0;
+        .await?;
 
     // all tokens in escrow
     println!("Alice balance: {}", alice_balance);
